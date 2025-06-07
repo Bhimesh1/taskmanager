@@ -1,47 +1,33 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app">
+    <h1>🗂️ Task Manager</h1>
+    <TaskForm @task-added="refreshList" />
+    <TaskList ref="listRef" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script lang="ts">
+import TaskForm from './components/TaskForm.vue'
+import TaskList from './components/TaskList.vue'
+import { defineComponent, ref } from 'vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default defineComponent({
+  name: 'App',
+  components: {
+    TaskForm,
+    TaskList
+  },
+  setup() {
+    const listRef = ref<InstanceType<typeof TaskList>>()
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    const refreshList = () => {
+      listRef.value?.$forceUpdate?.()
+    }
+
+    return {
+      listRef,
+      refreshList
+    }
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+})
+</script>
