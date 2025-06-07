@@ -1,4 +1,3 @@
-// main.go
 package main
 
 import (
@@ -10,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var tasks []Task
+var tasks = []Task{}
 var currentID int = 1
 
 func main() {
@@ -27,12 +26,6 @@ func main() {
 
 func getTasks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-
-	// If tasks is nil, return an empty slice instead
-	if tasks == nil {
-		tasks = []Task{}
-	}
-
 	json.NewEncoder(w).Encode(tasks)
 }
 
@@ -52,7 +45,7 @@ func updateTask(w http.ResponseWriter, r *http.Request) {
 	for i, t := range tasks {
 		if t.ID == id {
 			json.NewDecoder(r.Body).Decode(&tasks[i])
-			tasks[i].ID = id // keep original ID
+			tasks[i].ID = id
 			break
 		}
 	}
