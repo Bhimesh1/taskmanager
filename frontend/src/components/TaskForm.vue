@@ -16,7 +16,7 @@
 <script lang="ts">
 import axios from 'axios'
 import { defineComponent, ref } from 'vue'
-import type { Task } from '../../types'
+import type { Task } from '@/types'
 
 
 export default defineComponent({

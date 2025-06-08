@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8088:8088"
+    container_name: task-backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    container_name: task-frontend
+    depends_on:
+      - backend

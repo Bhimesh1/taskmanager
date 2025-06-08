@@ -11,8 +11,23 @@ A full-stack task manager application built with:
 
 ```
 task-manager-app/
-├── backend/   # Go REST API
-├── frontend/  # Vue.js 3 + TypeScript app
+├── backend/             # Go backend with REST API
+│   ├── main.go
+│   ├── model.go
+│   └── Dockerfile
+│
+├── frontend/            # Vue 3 + TS frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── TaskForm.vue
+│   │   │   └── TaskList.vue
+│   │   ├── App.vue
+│   │   ├── main.ts
+│   │   └── types.ts
+│   └── Dockerfile
+│
+├── docker-compose.yml  # Service orchestration
+└── README.md            # Project documentation
 ```
 
 ---
@@ -79,4 +94,44 @@ http://localhost:5173
 
 ---
 
-*To be updated in Phase 5: Dockerization + CI/CD.*
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/Bhimesh1/taskmanager.git
+cd taskmanager
+```
+
+### 2. Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+* Backend will run on: [http://localhost:8088/tasks](http://localhost:8088/tasks)
+* Frontend will run on: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 📌 Features
+
+* Create, read, and list tasks
+* Task model with ID, title, description, and status
+* RESTful APIs (GET, POST)
+* Responsive frontend using Vue.js 3 + TS
+* Clean architecture and code separation
+
+---
+
+## 📮 Contact
+
+**Bhimesh Patil** 
+
+[GitHub](https://github.com/Bhimesh1) ・ [Email](mailto:bhimeshpatil1@gmail.com)
+
+---
+
+> Project created for learning and demonstration purposes. Contributions welcome!
+

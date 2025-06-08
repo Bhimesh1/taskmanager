@@ -26,7 +26,7 @@
 <script lang="ts">
 import axios from 'axios'
 import { defineComponent, onMounted, ref } from 'vue'
-import type { Task } from '../../types'
+import type { Task } from '@/types'
 
 export default defineComponent({
   name: 'TaskList',
